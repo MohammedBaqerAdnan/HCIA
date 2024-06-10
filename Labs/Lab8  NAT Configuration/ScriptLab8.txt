@@ -1,0 +1,109 @@
+R1
+int gig0/0/3
+ip add 192.168.1.1 24
+q
+ip route-static 0.0.0.0 0 192.168.1.254
+user-interface vty 0 4 
+authentication-mode aaa
+q
+aaa
+local-user user1 password cipher huawei
+local-user user1 service-type telnet 
+local-user user1 privilege level 3 
+
+
+
+
+R2
+int gig0/0/1
+ip add 192.168.1.254 24
+int gig0/0/2
+ip add 1.2.3.4 24
+q
+ip route-static 0.0.0.0 0 1.2.3.254
+nat address-group 1 1.2.3.10 1.2.3.20
+acl 2000
+rule 10 permit source any 
+q
+int gig0/0/2
+nat outbound 2000 address-group 1 
+undo nat outbound 2000 address-group 1 
+nat outbound 2000
+
+
+
+
+R3
+int gig0/0/3
+ip add 1.2.3.254 24
+user-interface vty 0 4 
+authentication-mode aaa
+q
+aaa
+local-user user1 password cipher huawei
+local-user user1 service-type telnet 
+local-user user1 privilege level 3 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

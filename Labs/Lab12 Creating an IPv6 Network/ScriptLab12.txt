@@ -1,0 +1,58 @@
+R1
+ipv6
+int gig0/0/1
+ipv6 enable
+ipv6 address auto link-local
+ipv6 address auto global
+q
+ipv6 route-static 2000:0023:: 64 2000:0012::2
+
+
+
+
+R2
+ipv6
+int gig0/0/1
+ipv6 enable
+ipv6 address auto link-local
+int gig0/0/2
+ipv6 enable
+ipv6 address auto link-local
+int gig0/0/1
+ipv6 add 2000:0012::2 64
+int gig0/0/2
+ipv6 add 2000:0023::2 64 
+q
+dhcp enable 
+dhcpv6 pool poolv6
+address prefix 2000:0023::/64
+dns-server 2000:0023::2
+q
+int gig0/0/2
+dhcpv6 server poolv6
+undo ipv6 nd ra halt
+ipv6 nd autoconfig managed-address-flag
+ipv6 nd autoconfig other-flag
+int gig0/0/1
+undo ipv6 nd ra halt
+
+
+
+
+
+
+
+
+
+R3
+ipv6
+int gig0/0/2
+ipv6 enable
+ipv6 address auto link-local
+q
+dhcp enable
+int gig0/0/2
+ipv6 address auto dhcp
+ipv6 address auto global default
+
+

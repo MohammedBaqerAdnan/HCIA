@@ -1,0 +1,12 @@
+S1
+int vlanif1
+ip add 192.168.10.101 24 
+user-interface vty 0 4
+authentication-mode password
+set authentication password simple huawei
+protocol inbound telnet
+user privilege level 15
+q
+telnet server enable
+
+

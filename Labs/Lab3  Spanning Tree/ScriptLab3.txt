@@ -1,0 +1,35 @@
+S1
+stp enable 
+stp mode stp
+stp root primary
+stp mode rstp
+
+
+S2
+stp enable 
+stp mode stp
+stp root secondary
+stp mode rstp
+
+
+S3
+stp enable 
+stp mode stp
+stp mode rstp
+int gig0/0/1
+stp loop-protection
+port-group group-member gigabitethernet 0/0/10 to gigabitethernet 0/0/20
+stp edged-port enable 
+q
+stp bpdu-protection
+
+
+S4
+stp enable 
+stp mode stp
+int gig0/0/1
+stp cost 60000
+stp mode rstp
+
+
+

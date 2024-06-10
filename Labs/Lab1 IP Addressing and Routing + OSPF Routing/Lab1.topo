@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="2823784B-07DA-4171-A0C9-846BE76F082E" name="R3" poe="0" model="Router" settings="" system_mac="54-89-98-8C-4D-D3" com_port="2002" bootmode="0" cx="583.000000" cy="624.000000" edit_left="610" edit_top="678">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="2" />
+                <interface sztype="Ethernet" interfacename="GE" count="4" />
+                <interface sztype="Serial" interfacename="Serial" count="4" />
+            </slot>
+        </dev>
+        <dev id="9DBADD6A-427C-489f-AAE2-CB1A4385ED4A" name="R1" poe="0" model="Router" settings="" system_mac="54-89-98-D2-4A-35" com_port="2000" bootmode="0" cx="319.000000" cy="623.000000" edit_left="346" edit_top="677">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="2" />
+                <interface sztype="Ethernet" interfacename="GE" count="4" />
+                <interface sztype="Serial" interfacename="Serial" count="4" />
+            </slot>
+        </dev>
+        <dev id="5C15A655-0030-4f15-95A2-D253354E7782" name="R2" poe="0" model="AR3260" settings="" system_mac="00-E0-FC-A4-13-A4" com_port="2001" bootmode="0" cx="436.090912" cy="423.000000" edit_left="463" edit_top="477">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+            </slot>
+            <slot isMainBoard="0" id="0" type="6" />
+            <slot isMainBoard="0" id="1" type="6" />
+            <slot isMainBoard="0" id="2" type="6" />
+            <slot isMainBoard="0" id="3" type="6" />
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="9DBADD6A-427C-489f-AAE2-CB1A4385ED4A" destDeviceID="2823784B-07DA-4171-A0C9-846BE76F082E">
+            <interfacePair lineName="Copper" srcIndex="3" srcBoundRectIsMoved="0" srcBoundRect_X="389.183441" srcBoundRect_Y="650.163574" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="3" tarBoundRectIsMoved="1" tarBoundRect_X="566.816528" tarBoundRect_Y="650.836426" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+        <line srcDeviceID="9DBADD6A-427C-489f-AAE2-CB1A4385ED4A" destDeviceID="5C15A655-0030-4f15-95A2-D253354E7782">
+            <interfacePair lineName="Copper" srcIndex="5" srcBoundRectIsMoved="0" srcBoundRect_X="367.805389" srcBoundRect_Y="612.725830" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="5" tarBoundRectIsMoved="0" tarBoundRect_X="441.194611" tarBoundRect_Y="487.274170" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+        <line srcDeviceID="2823784B-07DA-4171-A0C9-846BE76F082E" destDeviceID="5C15A655-0030-4f15-95A2-D253354E7782">
+            <interfacePair lineName="Copper" srcIndex="5" srcBoundRectIsMoved="1" srcBoundRect_X="584.507813" srcBoundRect_Y="616.143372" srcOffset_X="0.000000" srcOffset_Y="0.000000" tarIndex="6" tarBoundRectIsMoved="0" tarBoundRect_X="488.492188" tarBoundRect_Y="484.856659" tarOffset_X="0.000000" tarOffset_Y="0.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips>
+        <txttip left="418" top="669" right="532" bottom="689" content="10.0.13.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="543" top="541" right="657" bottom="561" content="10.0.23.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="293" top="537" right="407" bottom="557" content="10.0.12.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="371" top="651" right="390" bottom="668" content=".1" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="343" top="610" right="362" bottom="627" content=".1" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="430" top="464" right="449" bottom="481" content=".2" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="479" top="460" right="498" bottom="477" content=".2" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="551" top="637" right="570" bottom="654" content=".3" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="581" top="598" right="600" bottom="615" content=".3" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="253" top="669" right="340" bottom="686" content="10.0.1.1/32" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="422" top="405" right="509" bottom="422" content="10.0.1.2/32" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="629" top="665" right="716" bottom="682" content="10.0.1.3/32" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="47" top="727" right="398" bottom="900" content="R1 &#x0D;&#x0A;int gig0/0/3 &#x0D;&#x0A;ip add 10.0.12.1 24 &#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;ip add 10.0.13.1 24&#x0D;&#x0A;int loopback0&#x0D;&#x0A;ip add 10.0.1.1 32&#x0D;&#x0A;ip route-static 10.0.23.0 24 10.0.13.3&#x0D;&#x0A;ip route-static 10.0.1.3 32 10.0.13.3&#x0D;&#x0A;ip route-static 10.0.1.2 32 10.0.12.2&#x0D;&#x0A;ip route-static 10.0.23.0 24 10.0.12.2 pre 100" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-12550016" charset="1" />
+        <txttip left="120" top="207" right="471" bottom="380" content="R2&#x0D;&#x0A;int gig3/0/0 &#x0D;&#x0A;ip add 10.0.12.2 24 &#x0D;&#x0A;int gig4/0/0&#x0D;&#x0A;ip add 10.0.23.2 24&#x0D;&#x0A;int loopback0&#x0D;&#x0A;ip add 10.0.1.2 32&#x0D;&#x0A;ip route-static 10.0.13.0 24 10.0.23.3&#x0D;&#x0A;ip route-static 10.0.1.3 32 10.0.23.3&#x0D;&#x0A;ip route-static 10.0.1.1 32 10.0.12.1&#x0D;&#x0A;ip route-static 10.0.13.0 24 10.0.12.1 pre 100 " fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32576" charset="1" />
+        <txttip left="637" top="719" right="988" bottom="892" content="R3&#x0D;&#x0A;int gig0/0/3 &#x0D;&#x0A;ip add 10.0.23.3 24 &#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;ip add 10.0.13.3 24&#x0D;&#x0A;int loopback0&#x0D;&#x0A;ip add 10.0.1.3 32&#x0D;&#x0A;ip route-static 10.0.12.0 24 10.0.23.2&#x0D;&#x0A;ip route-static 10.0.1.2 32 10.0.23.2&#x0D;&#x0A;ip route-static 10.0.1.1 32 10.0.13.1&#x0D;&#x0A;ip route-static 10.0.12.0 24 10.0.13.1 pre 100 " fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32640" charset="1" />
+        <txttip left="538" top="209" right="923" bottom="398" content="ospf 1 &#x0D;&#x0A;area 0 &#x0D;&#x0A;network 10.0.1.2 0.0.0.0 &#x0D;&#x0A;network 10.0.23.0 0.0.0.255 &#x0D;&#x0A;network 10.0.12.0 0.0.0.255 &#x0D;&#x0A;authentication-mode md5 1 cipher Data&#x0D;&#x0A;int gig3/0/0&#x0D;&#x0A;ospf authentication-mode md5 1 cipher Data&#x0D;&#x0A;int gig4/0/0&#x0D;&#x0A;ospf authentication-mode md5 1 cipher Data" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="639" top="913" right="979" bottom="1027" content="ospf 1 router-id 10.0.1.3&#x0D;&#x0A;area 0 &#x0D;&#x0A;network 10.0.1.3 0.0.0.0 &#x0D;&#x0A;network 10.0.23.0 0.0.0.255 &#x0D;&#x0A;network 10.0.13.0 0.0.0.255 &#x0D;&#x0A;authentication-mode md5 1 cipher Data" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-4144960" charset="1" />
+        <txttip left="44" top="917" right="420" bottom="1106" content="ip route-static 0.0.0.0 0.0.0.0 10.0.12.2&#x0D;&#x0A;ospf 1 router-id 10.0.1.1&#x0D;&#x0A;default-route-advertise alway&#x0D;&#x0A;area 0 &#x0D;&#x0A;network 10.0.12.0 0.0.0.255 &#x0D;&#x0A;network 10.0.13.0 0.0.0.255 &#x0D;&#x0A;network 10.0.1.1 0.0.0.0 &#x0D;&#x0A;authentication-mode md5 1 cipher Data&#x0D;&#x0A;int gi0/0/3&#x0D;&#x0A;ospf cost 10" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-8355776" charset="1" />
+    </txttips>
+</topo>

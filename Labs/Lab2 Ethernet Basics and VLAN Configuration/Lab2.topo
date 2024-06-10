@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="73ECBA92-56B7-4ffd-9984-F9F1836C6336" name="S4" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-37-5D-CC" com_port="2004" bootmode="0" cx="682.000000" cy="377.000000" edit_left="709" edit_top="431">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="A0A8BDA3-46EE-4f16-9C62-56633C7E2C7F" name="S2" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-09-67-B7" com_port="2001" bootmode="0" cx="752.000000" cy="226.000000" edit_left="779" edit_top="280">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="B4522693-BEA1-4b2b-A1F0-AC0344A6D34B" name="S1" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-55-6D-26" com_port="2000" bootmode="0" cx="439.000000" cy="222.000000" edit_left="466" edit_top="276">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="A8941686-A873-404e-B111-72E135DE7A6E" name="R1" poe="0" model="Router" settings="" system_mac="54-89-98-B0-35-C5" com_port="2002" bootmode="0" cx="353.000000" cy="371.000000" edit_left="380" edit_top="425">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="2" />
+                <interface sztype="Ethernet" interfacename="GE" count="4" />
+                <interface sztype="Serial" interfacename="Serial" count="4" />
+            </slot>
+        </dev>
+        <dev id="10B2D0C4-EABE-402c-A09D-9128C72088E0" name="S3" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-C4-03-30" com_port="2003" bootmode="0" cx="511.000000" cy="379.000000" edit_left="538" edit_top="433">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="312B44EC-2356-48a9-81CA-576BC9859F09" name="R3" poe="0" model="Router" settings="" system_mac="54-89-98-82-6A-DD" com_port="2005" bootmode="0" cx="842.000000" cy="378.000000" edit_left="869" edit_top="432">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="2" />
+                <interface sztype="Ethernet" interfacename="GE" count="4" />
+                <interface sztype="Serial" interfacename="Serial" count="4" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="B4522693-BEA1-4b2b-A1F0-AC0344A6D34B" destDeviceID="A0A8BDA3-46EE-4f16-9C62-56633C7E2C7F">
+            <interfacePair lineName="Copper" srcIndex="9" srcBoundRectIsMoved="1" srcBoundRect_X="509.180237" srcBoundRect_Y="249.551819" srcOffset_X="-17.000000" srcOffset_Y="-19.000000" tarIndex="9" tarBoundRectIsMoved="1" tarBoundRect_X="735.819763" tarBoundRect_Y="252.448181" tarOffset_X="-36.000000" tarOffset_Y="-18.000000" />
+        </line>
+        <line srcDeviceID="B4522693-BEA1-4b2b-A1F0-AC0344A6D34B" destDeviceID="A8941686-A873-404e-B111-72E135DE7A6E">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="1" srcBoundRect_X="444.412872" srcBoundRect_Y="286.400970" srcOffset_X="-51.000000" srcOffset_Y="-14.000000" tarIndex="3" tarBoundRectIsMoved="1" tarBoundRect_X="401.587128" tarBoundRect_Y="360.599030" tarOffset_X="-50.000000" tarOffset_Y="-19.000000" />
+        </line>
+        <line srcDeviceID="B4522693-BEA1-4b2b-A1F0-AC0344A6D34B" destDeviceID="10B2D0C4-EABE-402c-A09D-9128C72088E0">
+            <interfacePair lineName="Copper" srcIndex="12" srcBoundRectIsMoved="1" srcBoundRect_X="484.001343" srcBoundRect_Y="288.252899" srcOffset_X="9.000000" srcOffset_Y="0.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="519.998657" tarBoundRect_Y="366.747101" tarOffset_X="6.000000" tarOffset_Y="-3.000000" />
+        </line>
+        <line srcDeviceID="A0A8BDA3-46EE-4f16-9C62-56633C7E2C7F" destDeviceID="312B44EC-2356-48a9-81CA-576BC9859F09">
+            <interfacePair lineName="Copper" srcIndex="0" srcBoundRectIsMoved="1" srcBoundRect_X="801.001770" srcBoundRect_Y="290.158569" srcOffset_X="8.000000" srcOffset_Y="-4.000000" tarIndex="4" tarBoundRectIsMoved="1" tarBoundRect_X="846.998230" tarBoundRect_Y="367.841431" tarOffset_X="6.000000" tarOffset_Y="-6.000000" />
+        </line>
+        <line srcDeviceID="A0A8BDA3-46EE-4f16-9C62-56633C7E2C7F" destDeviceID="73ECBA92-56B7-4ffd-9984-F9F1836C6336">
+            <interfacePair lineName="Copper" srcIndex="13" srcBoundRectIsMoved="1" srcBoundRect_X="760.837708" srcBoundRect_Y="292.178680" srcOffset_X="-66.000000" srcOffset_Y="-7.000000" tarIndex="1" tarBoundRectIsMoved="1" tarBoundRect_X="727.162292" tarBoundRect_Y="364.821320" tarOffset_X="-58.000000" tarOffset_Y="-3.000000" />
+        </line>
+    </lines>
+    <shapes>
+        <shape type="2" filloption="0" color="16744448" upleftcorner="296,337" width="160" height="147" startpt="0,0" endpt="0,0" borderStyle="2" borderWidth="1" />
+        <shape type="2" filloption="0" color="16744448" upleftcorner="495,336" width="272" height="157" startpt="0,0" endpt="0,0" borderStyle="2" borderWidth="1" />
+        <shape type="2" filloption="0" color="16744448" upleftcorner="813,342" width="123" height="149" startpt="0,0" endpt="0,0" borderStyle="2" borderWidth="1" />
+    </shapes>
+    <txttips>
+        <txttip left="343" top="450" right="412" bottom="474" content="VLAN 2" fontname="Consolas" fontstyle="0" editsize="140" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="597" top="459" right="666" bottom="483" content="VLAN 3" fontname="Consolas" fontstyle="0" editsize="140" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="835" top="456" right="915" bottom="480" content="VLAN 10" fontname="Consolas" fontstyle="0" editsize="140" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="319" top="308" right="424" bottom="328" content="10.1.2.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-32768" charset="1" />
+        <txttip left="393" top="360" right="412" bottom="377" content=".1" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="824" top="311" right="938" bottom="331" content="10.1.10.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-32768" charset="1" />
+        <txttip left="832" top="367" right="851" bottom="384" content=".1" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="508" top="308" right="613" bottom="328" content="10.1.3.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-16711936" charset="1" />
+        <txttip left="642" top="310" right="747" bottom="330" content="10.1.3.0/24" fontname="Consolas" fontstyle="0" editsize="120" txtcolor="-16777216" txtbkcolor="-16711936" charset="1" />
+        <txttip left="503" top="365" right="522" bottom="382" content=".1" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="719" top="370" right="738" bottom="387" content=".2" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="521" top="340" right="570" bottom="357" content="access" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="737" top="345" right="786" bottom="362" content="access" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="418" top="330" right="467" bottom="347" content="access" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="576" top="227" right="618" bottom="244" content="trunk" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="840" top="339" right="889" bottom="356" content="hyprid" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="285" top="497" right="425" bottom="561" content="R1&#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;ip add 10.1.2.1 24 &#x0D;&#x0A;" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8355840" charset="1" />
+        <txttip left="473" top="499" right="636" bottom="625" content="S3&#x0D;&#x0A;vlan 3 &#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;port link-type access &#x0D;&#x0A;port default vlan 3 &#x0D;&#x0A;int vlanif3 &#x0D;&#x0A;ip add 10.1.3.1 24 &#x0D;&#x0A;" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-4144960" charset="1" />
+        <txttip left="661" top="499" right="824" bottom="625" content="S4&#x0D;&#x0A;vlan 3 &#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;port link-type access &#x0D;&#x0A;port default vlan 3 &#x0D;&#x0A;int vlanif3 &#x0D;&#x0A;ip add 10.1.3.2 24 &#x0D;&#x0A;" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8323073" charset="1" />
+        <txttip left="281" top="18" right="534" bottom="222" content="S1&#x0D;&#x0A;vlan batch 2 3 10&#x0D;&#x0A;int gig0/0/1 &#x0D;&#x0A;port link-type access &#x0D;&#x0A;port default vlan 2&#x0D;&#x0A;int gig0/0/13&#x0D;&#x0A;port link-type access &#x0D;&#x0A;port default vlan 3&#x0D;&#x0A;int gig0/0/10&#x0D;&#x0A;port link-type trunk &#x0D;&#x0A;port trunk allow-pass vlan 2 3 10&#x0D;&#x0A;undo port trunk allow-pass vlan 1&#x0D;&#x0A;" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8355585" charset="1" />
+        <txttip left="822" top="13" right="1090" bottom="264" content="&#x0D;&#x0A;S2&#x0D;&#x0A;vlan batch 2 3 10&#x0D;&#x0A;int gig0/0/14&#x0D;&#x0A;port link-type access &#x0D;&#x0A;port default vlan 3&#x0D;&#x0A;int gig0/0/10&#x0D;&#x0A;port link-type trunk &#x0D;&#x0A;port trunk allow-pass vlan 2 3 10&#x0D;&#x0A;undo port trunk allow-pass vlan 1&#x0D;&#x0A;vlan 10&#x0D;&#x0A;mac-vlan mac-address 5489-9882-6ae2&#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;port link-type hybrid &#x0D;&#x0A;port hybrid untagged vlan 10&#x0D;&#x0A;mac-vlan enable " fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32513" charset="1" />
+        <txttip left="947" top="401" right="1094" bottom="449" content="R3&#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;ip add 10.1.10.1 24" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+    </txttips>
+</topo>

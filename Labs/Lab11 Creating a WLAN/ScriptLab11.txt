@@ -1,0 +1,127 @@
+AC
+vlan batch 100 101
+int gig0/0/10
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+q
+int vlanif100
+ip add 192.168.100.254 24 
+q
+dhcp enable 
+ip pool ap
+network 192.168.100.0 mask 24
+gateway-list 192.168.101.254
+quit 
+int vlanif100
+dhcp select global
+q
+wlan
+ap-group name ap-group1
+regulatory-domain-profile name default 
+country-code cn
+q
+wlan
+ap-group name ap-group1
+regulatory-domain-profile default 
+q
+q
+capwap source interface Vlanif100
+wlan
+ap auth-mode mac-auth
+ap-id 0 ap-mac 00e0-fc9a-6cc0
+ap-name ap1
+ap-group ap-group1
+ap-id 1 ap-mac 00e0-fcf2-4430
+ap-name ap2
+ap-group ap-group1
+q
+security-profile name HCIA-WLAN
+security wpa-wpa2 psk pass-phrase HCIA-Datacom aes
+q
+wlan 
+ssid-profile name HCIA-WLAN
+ssid HCIA-WLAN
+q
+wlan 
+vap-profile name HCIA-WLAN
+forward-mode direct-forward
+service-vlan vlan-id 101
+security-profile HCIA-WLAN
+ssid-profile HCIA-WLAN
+q
+ap-group name ap-group1
+vap-profile HCIA-WLAN wlan 1 radio all
+
+
+
+
+S1
+vlan batch 100 101
+int gig0/0/10
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+int gig0/0/13
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+int gig0/0/14
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+q
+int vlanif101
+ip add 192.168.101.254 24 
+int loopback0
+ip add 10.0.1.1 32 
+q
+dhcp enable 
+ip pool sta
+network 192.168.101.0 mask 24
+gateway-list 192.168.101.254
+quit 
+int vlanif101
+dhcp select global
+
+
+
+
+
+S3
+int gig0/0/4
+poe enable 
+q
+vlan batch 100 101
+int gig0/0/1
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+int gig0/0/4
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+port trunk pvid vlan 100
+
+
+
+S4
+int gig0/0/4
+poe enable 
+q
+vlan batch 100 101
+int gig0/0/1
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+int gig0/0/4
+port link-type trunk 
+port trunk allow-pass vlan 100 101 
+port trunk pvid vlan 100
+
+
+
+
+
+
+
+
+AP1
+
+
+
+
+AP2

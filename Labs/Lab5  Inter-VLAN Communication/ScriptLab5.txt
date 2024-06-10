@@ -1,0 +1,55 @@
+R2
+int gig0/0/1
+ip add 192.168.2.1 24
+ip route-static 0.0.0.0 0 192.168.2.254
+
+
+R3
+int gig0/0/1
+ip add 192.168.3.1 24
+ip route-static  0.0.0.0 0 192.168.3.254
+
+
+S1
+vlan batch 2 3
+int gig0/0/2 
+port link-type access 
+port default vlan 2 
+int gig0/0/3
+port link-type access 
+port default vlan 3
+int gig0/0/1
+port link-type trunk
+port trunk allow-pass vlan 2 3
+undo port trunk allow-pass vlan 1
+int vlanif 2
+ip add 192.168.2.254 24
+int vlanif 3
+ip add 192.168.3.254 24
+
+
+
+R1
+int gig0/0/1.2
+dot1q termination vid 2
+ip add 192.168.2.254 24
+arp broadcast enable 
+int gig0/0/1.3
+dot1q termination vid 3
+ip add 192.168.3.254 24
+arp broadcast enable 
+
+
+
+
+
+
+
+undo configuration S1
+int gig0/0/1
+undo port link-type trunk
+undo port trunk allow-pass vlan 2 3
+
+undo configuration R1
+undo int gig0/0/1.2
+undo int gig0/0/1.3

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="BBEA8275-E04F-4d42-80FC-DE95E91F620F" name="S2" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-CB-32-08" com_port="2001" bootmode="0" cx="890.000000" cy="485.000000" edit_left="912" edit_top="472">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+        <dev id="03475E31-DDEB-4b5b-87C2-32F353CC15F5" name="S1" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-3B-70-5B" com_port="2000" bootmode="0" cx="534.000000" cy="479.000000" edit_left="558" edit_top="463">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="03475E31-DDEB-4b5b-87C2-32F353CC15F5" destDeviceID="BBEA8275-E04F-4d42-80FC-DE95E91F620F">
+            <interfacePair lineName="Copper" srcIndex="9" srcBoundRectIsMoved="1" srcBoundRect_X="604.177612" srcBoundRect_Y="506.727722" srcOffset_X="-12.000000" srcOffset_Y="-22.000000" tarIndex="9" tarBoundRectIsMoved="1" tarBoundRect_X="873.822388" tarBoundRect_Y="511.272278" tarOffset_X="-34.000000" tarOffset_Y="-26.000000" />
+            <interfacePair lineName="Copper" srcIndex="10" srcBoundRectIsMoved="1" srcBoundRect_X="612.177612" srcBoundRect_Y="498.727722" srcOffset_X="7.000000" srcOffset_Y="-1.000000" tarIndex="10" tarBoundRectIsMoved="1" tarBoundRect_X="881.822388" tarBoundRect_Y="503.272278" tarOffset_X="-58.000000" tarOffset_Y="-1.000000" />
+            <interfacePair lineName="Copper" srcIndex="11" srcBoundRectIsMoved="1" srcBoundRect_X="596.177612" srcBoundRect_Y="514.727722" srcOffset_X="-2.000000" srcOffset_Y="6.000000" tarIndex="11" tarBoundRectIsMoved="1" tarBoundRect_X="865.822388" tarBoundRect_Y="519.272278" tarOffset_X="-22.000000" tarOffset_Y="5.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips>
+        <txttip left="293" top="103" right="576" bottom="448" content="int eth-trunk 1&#x0D;&#x0A;mode man load&#x0D;&#x0A;trunkport gigabitethernet 0/0/10&#x0D;&#x0A;trunkport gigabitethernet 0/0/11&#x0D;&#x0A;trunkport gigabitethernet 0/0/12&#x0D;&#x0A;int eth-trunk 1&#x0D;&#x0A;undo trunkport gigabitethernet 0/0/10&#x0D;&#x0A;undo trunkport gigabitethernet 0/0/11&#x0D;&#x0A;undo trunkport gigabitethernet 0/0/12&#x0D;&#x0A;mode lacp-static&#x0D;&#x0A;trunkport gigabitethernet 0/0/10&#x0D;&#x0A;trunkport gigabitethernet 0/0/11&#x0D;&#x0A;trunkport gigabitethernet 0/0/12&#x0D;&#x0A;q&#x0D;&#x0A;lacp pri 100&#x0D;&#x0A;int gig0/0/10&#x0D;&#x0A;lacp pri 40000&#x0D;&#x0A;int eth1&#x0D;&#x0A;max active-linknumber 2&#x0D;&#x0A;least active-linknumber 2&#x0D;&#x0A;lacp preempt enable &#x0D;&#x0A;load-balance dst-ip" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32704" charset="1" />
+        <txttip left="857" top="253" right="1140" bottom="457" content="int eth-trunk 1&#x0D;&#x0A;mode man load&#x0D;&#x0A;trunkport gigabitethernet 0/0/10&#x0D;&#x0A;trunkport gigabitethernet 0/0/11&#x0D;&#x0A;trunkport gigabitethernet 0/0/12&#x0D;&#x0A;int eth-trunk 1&#x0D;&#x0A;undo trunkport gigabitethernet 0/0/10&#x0D;&#x0A;undo trunkport gigabitethernet 0/0/11&#x0D;&#x0A;undo trunkport gigabitethernet 0/0/12&#x0D;&#x0A;mode lacp-static&#x0D;&#x0A;trunkport gigabitethernet 0/0/10&#x0D;&#x0A;trunkport gigabitethernet 0/0/11&#x0D;&#x0A;trunkport gigabitethernet 0/0/12" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+    </txttips>
+</topo>

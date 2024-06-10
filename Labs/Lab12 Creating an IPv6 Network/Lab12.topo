@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="D8C760EB-518E-4866-A609-4C79EB987735" name="R1" poe="0" model="AR3260" settings="" system_mac="00-E0-FC-29-73-98" com_port="2000" bootmode="0" cx="454.000000" cy="687.000000" edit_left="415" edit_top="705">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+            </slot>
+        </dev>
+        <dev id="B1E208A7-0A2E-435a-90EC-EB4E58D105EF" name="R2" poe="0" model="AR3260" settings="" system_mac="00-E0-FC-B1-0C-B6" com_port="2001" bootmode="0" cx="612.000000" cy="504.000000" edit_left="640" edit_top="488">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+            </slot>
+        </dev>
+        <dev id="F31BF3AE-5845-4d0c-BB5F-4906735BE459" name="R3" poe="0" model="AR3260" settings="" system_mac="00-E0-FC-CF-70-8F" com_port="2002" bootmode="0" cx="757.000000" cy="685.000000" edit_left="852" edit_top="707">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="1" />
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="B1E208A7-0A2E-435a-90EC-EB4E58D105EF" destDeviceID="F31BF3AE-5845-4d0c-BB5F-4906735BE459">
+            <interfacePair lineName="Copper" srcIndex="2" srcBoundRectIsMoved="1" srcBoundRect_X="665.999390" srcBoundRect_Y="564.702698" srcOffset_X="6.000000" srcOffset_Y="-4.000000" tarIndex="2" tarBoundRectIsMoved="1" tarBoundRect_X="757.000610" tarBoundRect_Y="678.297302" tarOffset_X="12.000000" tarOffset_Y="-9.000000" />
+        </line>
+        <line srcDeviceID="B1E208A7-0A2E-435a-90EC-EB4E58D105EF" destDeviceID="D8C760EB-518E-4866-A609-4C79EB987735">
+            <interfacePair lineName="Copper" srcIndex="1" srcBoundRectIsMoved="1" srcBoundRect_X="610.778870" srcBoundRect_Y="563.686462" srcOffset_X="-53.000000" srcOffset_Y="-11.000000" tarIndex="1" tarBoundRectIsMoved="1" tarBoundRect_X="509.221130" tarBoundRect_Y="681.313538" tarOffset_X="-41.000000" tarOffset_Y="-19.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips>
+        <txttip left="571" top="464" right="703" bottom="481" content="Local(link-local)" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="403" top="741" right="535" bottom="758" content="Local(link-local)" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="729" top="737" right="861" bottom="754" content="Local(link-local)" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="439" top="546" right="556" bottom="563" content="2000:0012::2/64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32640" charset="1" />
+        <txttip left="725" top="556" right="842" bottom="573" content="2000:0023::2/64" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32640" charset="1" />
+        <txttip left="616" top="443" right="650" bottom="460" content="DHCP" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="382" top="658" right="461" bottom="675" content="IP by DHCP" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32640" charset="1" />
+        <txttip left="821" top="665" right="900" bottom="682" content="IP by DHCP" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-32640" charset="1" />
+        <txttip left="207" top="771" right="551" bottom="881" content="ipv6&#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;ipv6 enable&#x0D;&#x0A;ipv6 address auto link-local&#x0D;&#x0A;ipv6 address auto global&#x0D;&#x0A;q&#x0D;&#x0A;ipv6 route-static 2000:0023:: 64 2000:0012::2" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8323073" charset="1" />
+        <txttip left="727" top="767" right="973" bottom="909" content="ipv6&#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;ipv6 enable&#x0D;&#x0A;ipv6 address auto link-local&#x0D;&#x0A;q&#x0D;&#x0A;dhcp enable&#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;ipv6 address auto dhcp&#x0D;&#x0A;ipv6 address auto global default" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8323073" charset="1" />
+        <txttip left="264" top="142" right="562" bottom="533" content="R2&#x0D;&#x0A;ipv6&#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;ipv6 enable&#x0D;&#x0A;ipv6 address auto link-local&#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;ipv6 enable&#x0D;&#x0A;ipv6 address auto link-local&#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;ipv6 add 2000:0012::2 64&#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;ipv6 add 2000:0023::2 64 &#x0D;&#x0A;q&#x0D;&#x0A;dhcp enable &#x0D;&#x0A;dhcpv6 pool poolv6&#x0D;&#x0A;address prefix 2000:0023::/64&#x0D;&#x0A;dns-server 2000:0023::2&#x0D;&#x0A;q&#x0D;&#x0A;int gig0/0/2&#x0D;&#x0A;dhcpv6 server poolv6&#x0D;&#x0A;undo ipv6 nd ra halt&#x0D;&#x0A;ipv6 nd autoconfig managed-address-flag&#x0D;&#x0A;ipv6 nd autoconfig other-flag&#x0D;&#x0A;int gig0/0/1&#x0D;&#x0A;undo ipv6 nd ra halt" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8323073" charset="1" />
+    </txttips>
+</topo>

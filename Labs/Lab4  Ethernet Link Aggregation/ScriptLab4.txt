@@ -1,0 +1,41 @@
+S1
+int eth-trunk 1
+mode man load
+trunkport gigabitethernet 0/0/10
+trunkport gigabitethernet 0/0/11
+trunkport gigabitethernet 0/0/12
+int eth-trunk 1
+undo trunkport gigabitethernet 0/0/10
+undo trunkport gigabitethernet 0/0/11
+undo trunkport gigabitethernet 0/0/12
+mode lacp-static
+trunkport gigabitethernet 0/0/10
+trunkport gigabitethernet 0/0/11
+trunkport gigabitethernet 0/0/12
+q
+lacp pri 100
+int gig0/0/10
+lacp pri 40000
+int eth1
+max active-linknumber 2
+least active-linknumber 2
+lacp preempt enable 
+load-balance dst-ip
+
+
+S2
+int eth-trunk 1
+mode man load
+trunkport gigabitethernet 0/0/10
+trunkport gigabitethernet 0/0/11
+trunkport gigabitethernet 0/0/12
+int eth-trunk 1
+undo trunkport gigabitethernet 0/0/10
+undo trunkport gigabitethernet 0/0/11
+undo trunkport gigabitethernet 0/0/12
+mode lacp-static
+trunkport gigabitethernet 0/0/10
+trunkport gigabitethernet 0/0/11
+trunkport gigabitethernet 0/0/12
+
+

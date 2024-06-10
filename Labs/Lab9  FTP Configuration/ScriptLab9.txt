@@ -1,0 +1,20 @@
+R1
+int gig0/0/2
+ip address 10.0.12.1 24
+
+
+
+
+
+R2
+int gig0/0/2
+ip address 10.0.12.2 24
+q
+aaa
+local-user ftp password cipher ftp
+local-user ftp privilege level 15
+local-user ftp service-type ftp
+q
+ftp server enable
+aaa
+local-user ftp ftp-directory flash:/

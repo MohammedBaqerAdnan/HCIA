@@ -1,0 +1,869 @@
+Router 
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp target-host trap-hostname nms address 192.168.100.2 udp-port 162 trap-paramsname datacom
+snmp target-host trap-paramsname datacom v3 securityname test privacy
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode aes128 huaweilab
+snmp-agent trap source GigabitEthernet0/0/1
+snmp-agent trap enable 
+snmp-agent 
+acl number 2000
+rule 5 permit source 192.168.105.0 0.0.0.255
+rule 10 permit source 192.168.106.0 0.0.0.255
+rule 15 permit source 192.168.107.0 0.0.0.255
+q
+nat address-group 1 1.1.1.2 1.1.1.10
+interface GigabitEthernet0/0/0
+ip address 1.1.1.1 255.255.255.0
+nat server protocol tcp global current-interface 8080 inside 192.168.100.1 www
+nat outbound 2000 address-group 1
+q
+ip route-static 0.0.0.0 0.0.0.0 1.1.1.254
+interface GigabitEthernet0/0/1
+ip address 192.168.204.1 255.255.255.252
+ospf 1
+default-route-advertise always
+area 0.0.0.0
+network 192.168.204.0 0.0.0.3
+
+
+
+
+
+CORE1
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif1
+snmp-agent trap enable 
+snmp-agent 
+acl number 3000
+rule 5 deny ip source 192.168.105.0 0.0.0.255 destination 192.168.0.0 0.0.255.255
+rule 10 permit ip
+q
+vlan batch 100 105 201 to 202 204 to 205
+dhcp enable
+ip pool ap-f1
+gateway-list 192.168.205.254
+network 192.168.205.0 mask 255.255.255.0
+excluded-ip-address 192.168.205.253
+ip pool sta-f1
+gateway-list 192.168.105.254
+network 192.168.105.0 mask 255.255.255.0
+interface Vlanif105
+ip address 192.168.105.254 255.255.255.0
+dhcp select global
+interface Vlanif1
+ip address 192.168.1.254 255.255.255.0
+interface Vlanif100
+ip address 192.168.100.254 255.255.255.0
+interface Vlanif201
+ip address 192.168.201.1 255.255.255.252
+interface Vlanif202
+ip address 192.168.202.1 255.255.255.252
+interface Vlanif204
+ip address 192.168.204.2 255.255.255.252
+ospf 1
+area 0.0.0.0
+network 192.168.1.0 0.0.0.255
+network 192.168.100.0 0.0.0.255
+network 192.168.105.0 0.0.0.255
+network 192.168.205.0 0.0.0.255
+network 192.168.201.0 0.0.0.3
+network 192.168.202.0 0.0.0.3
+network 192.168.204.0 0.0.0.3
+q
+q
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk allow-pass vlan 100 105 205
+interface GigabitEthernet0/0/2
+port link-type access
+port default vlan 201
+interface GigabitEthernet0/0/3
+port link-type access
+port default vlan 202
+interface GigabitEthernet0/0/4
+port link-type access
+port default vlan 205
+interface GigabitEthernet0/0/5
+port link-type access
+port default vlan 204
+
+
+
+
+
+F2-AGG1
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif2
+snmp-agent trap enable 
+snmp-agent 
+vlan batch 2 101 to 102 106 201 203 206
+dhcp enable
+ip pool ap-f2
+gateway-list 192.168.206.254
+network 192.168.206.0 mask 255.255.255.0
+option 43 sub-option 3 ascii 192.168.205.253
+ip pool sta-f2
+gateway-list 192.168.106.254
+network 192.168.106.0 mask 255.255.255.0
+interface Vlanif106
+ip address 192.168.106.254 255.255.255.0
+dhcp select global
+interface Vlanif206
+ip address 192.168.206.254 255.255.255.0
+dhcp select global
+ip pool admin
+gateway-list 192.168.102.254
+network 192.168.102.0 mask 255.255.255.0
+ip pool manager
+gateway-list 192.168.101.254
+network 192.168.101.0 mask 255.255.255.0
+interface Vlanif2
+ip address 192.168.2.254 255.255.255.0
+interface Vlanif101
+ip address 192.168.101.254 255.255.255.0
+dhcp select global
+interface Vlanif102
+ip address 192.168.102.254 255.255.255.0
+dhcp select global
+interface Vlanif201
+ip address 192.168.201.2 255.255.255.252
+interface Vlanif203
+ip address 192.168.203.1 255.255.255.252
+ospf 1
+area 0.0.0.0
+network 192.168.2.0 0.0.0.255
+network 192.168.101.0 0.0.0.255
+network 192.168.102.0 0.0.0.255
+network 192.168.106.0 0.0.0.255
+network 192.168.201.0 0.0.0.3
+network 192.168.203.0 0.0.0.3
+network 192.168.206.0 0.0.0.255
+q
+q
+interface GigabitEthernet0/0/1
+port link-type access
+port default vlan 201
+interface GigabitEthernet0/0/2
+port link-type access
+port default vlan 203
+interface GigabitEthernet0/0/11
+port link-type trunk
+port trunk pvid vlan 2
+port trunk allow-pass vlan 2 102
+interface GigabitEthernet0/0/12
+port link-type trunk
+port trunk pvid vlan 2
+port trunk allow-pass vlan 2 101 106 206
+interface GigabitEthernet0/0/13
+port link-type trunk
+port trunk pvid vlan 2
+port trunk allow-pass vlan 2 102
+
+
+
+
+
+
+F3-AGG1
+vlan batch 3 103 to 104 107 202 to 203 207
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif3
+snmp-agent trap enable 
+snmp-agent 
+dhcp enable
+ip pool ap-f3
+gateway-list 192.168.207.254
+network 192.168.207.0 mask 255.255.255.0
+option 43 sub-option 3 ascii 192.168.205.253
+ip pool sta-f3
+gateway-list 192.168.107.254
+network 192.168.107.0 mask 255.255.255.0
+interface Vlanif107
+ip address 192.168.107.254 255.255.255.0
+dhcp select global
+interface Vlanif207
+ip address 192.168.207.254 255.255.255.0
+dhcp select global
+ip pool marketing
+gateway-list 192.168.103.254
+network 192.168.103.0 mask 255.255.255.0
+ip pool rd
+gateway-list 192.168.104.254
+network 192.168.104.0 mask 255.255.255.0
+interface Vlanif3
+ip address 192.168.3.254 255.255.255.0
+interface Vlanif103
+ip address 192.168.103.254 255.255.255.0
+dhcp select global
+interface Vlanif104
+ip address 192.168.104.254 255.255.255.0
+dhcp select global
+interface Vlanif202
+ip address 192.168.202.2 255.255.255.252
+interface Vlanif203
+ip address 192.168.203.2 255.255.255.252
+ospf 1
+area 0.0.0.0
+network 192.168.3.0 0.0.0.255
+network 192.168.103.0 0.0.0.255
+network 192.168.104.0 0.0.0.255
+network 192.168.107.0 0.0.0.255
+network 192.168.202.0 0.0.0.3
+network 192.168.203.0 0.0.0.3
+network 192.168.207.0 0.0.0.255
+q
+q
+interface GigabitEthernet0/0/1
+port link-type access
+port default vlan 202
+interface GigabitEthernet0/0/2
+port link-type access
+port default vlan 203
+interface GigabitEthernet0/0/11
+port link-type trunk
+port trunk pvid vlan 3
+port trunk allow-pass vlan 3 103 to 104
+interface GigabitEthernet0/0/12
+port link-type trunk
+port trunk pvid vlan 3
+port trunk allow-pass vlan 3 103 107 207
+interface GigabitEthernet0/0/13
+port link-type trunk
+port trunk pvid vlan 3
+port trunk allow-pass vlan 3 103 to 104
+
+
+
+
+
+
+AC
+vlan batch 205
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap-hostname nms address 192.168.100.2 udp-port 162 trap-paramsname datacom
+snmp-agent target-host trap-paramsname datacom v3 securityname huaweilab privacy
+snmp-agent trap source vlanif205
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.205.25
+interface Vlanif205
+ip address 192.168.205.253 255.255.255.0
+q
+capwap source interface vlanif205
+wlan
+security-profile name WLAN-F1
+security wpa-wpa2 psk pass-phrase WLAN@Guest123 aes 
+security-profile name WLAN-F2
+security wpa-wpa2 psk pass-phrase WLAN@Employee2 aes
+security-profile name WLAN-F3
+security wpa-wpa2 psk pass-phrase WLAN@Employee3 aes 
+ssid-profile name WLAN-F1
+ssid WLAN-F1
+ssid-profile name WLAN-F2
+ssid WLAN-F2
+ssid-profile name WLAN-F3
+ssid WLAN-F3
+vap-profile name WLAN-F1
+service-vlan vlan-id 105
+ssid-profile WLAN-F1
+security-profile WLAN-F1
+vap-profile name WLAN-F2
+service-vlan vlan-id 106
+ssid-profile WLAN-F2
+security-profile WLAN-F2
+vap-profile name WLAN-F3
+service-vlan vlan-id 107
+ssid-profile WLAN-F3
+security-profile WLAN-F3
+ap-group name WLAN-F1
+radio 0
+vap-profile WLAN-F1 wlan 1
+radio 1
+vap-profile WLAN-F1 wlan 1
+radio 2
+vap-profile WLAN-F1 wlan 1
+ap-group name WLAN-F2
+radio 0
+vap-profile WLAN-F2 wlan 2
+radio 1
+vap-profile WLAN-F2 wlan 2
+radio 2
+vap-profile WLAN-F2 wlan 2
+ap-group name WLAN-F3
+radio 0
+vap-profile WLAN-F3 wlan 2
+radio 1
+vap-profile WLAN-F3 wlan 2
+radio 2
+vap-profile WLAN-F3 wlan 2
+ap-id 0 type-id 60 ap-mac 00e0-fcca-2e20 ap-sn 2102354483108B3A413A
+ap-name F1-AP1
+ap-group WLAN-F1
+ap-id 1 type-id 60 ap-mac 00e0-fcf0-7bc0 ap-sn 210235448310D45A674C
+ap-name F2-AP1
+ap-group WLAN-F2
+ap-id 2 type-id 60 ap-mac 00e0-fcb2-72f0 ap-sn 210235448310C73E4033
+ap-name F3-AP1
+ap-group WLAN-F3
+
+
+
+
+
+F1-ACC1
+vlan batch 100 105 205
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif1
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.1.254
+interface Vlanif1
+ip address 192.168.1.1 255.255.255.0
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk allow-pass vlan 100 105 205
+interface Ethernet0/0/2
+port link-type access
+port default vlan 100
+interface Ethernet0/0/3
+port link-type access
+port default vlan 100
+interface Ethernet0/0/4
+port link-type access
+port default vlan 100
+interface Ethernet0/0/5
+port link-type access
+port default vlan 100
+interface Ethernet0/0/6
+port link-type access
+port default vlan 100
+interface Ethernet0/0/7
+port link-type access
+port default vlan 100
+interface Ethernet0/0/8
+port link-type access
+port default vlan 100
+interface Ethernet0/0/9
+port link-type access
+port default vlan 100
+interface Ethernet0/0/10
+port link-type access
+port default vlan 100
+interface Ethernet0/0/20
+port link-type trunk
+port trunk pvid vlan 205
+port trunk allow-pass vlan 105 205
+
+
+
+
+
+
+
+F2-ACC1
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif1
+snmp-agent trap enable 
+snmp-agent 
+vlan batch 2 102
+interface Vlanif2
+ip address 192.168.2.1 255.255.255.0
+interface Ethernet0/0/1
+port link-type access
+port default vlan 102
+interface Ethernet0/0/2
+port link-type access
+port default vlan 102
+interface Ethernet0/0/3
+port link-type access
+port default vlan 102
+interface Ethernet0/0/4
+port link-type access
+port default vlan 102
+interface Ethernet0/0/5
+port link-type access
+port default vlan 102
+interface Ethernet0/0/6
+port link-type access
+port default vlan 102
+interface Ethernet0/0/7
+port link-type access
+port default vlan 102
+interface Ethernet0/0/8
+port link-type access
+port default vlan 102
+interface Ethernet0/0/9
+port link-type access
+port default vlan 102
+interface Ethernet0/0/10
+port link-type access
+port default vlan 102
+interface Ethernet0/0/11
+port link-type access
+port default vlan 102
+interface Ethernet0/0/12
+port link-type access
+port default vlan 102
+interface Ethernet0/0/13
+port link-type access
+port default vlan 102
+interface Ethernet0/0/14
+port link-type access
+port default vlan 102
+interface Ethernet0/0/15
+port link-type access
+port default vlan 102
+interface Ethernet0/0/16
+port link-type access
+port default vlan 102
+interface Ethernet0/0/17
+port link-type access
+port default vlan 102
+interface Ethernet0/0/18
+port link-type access
+port default vlan 102
+interface Ethernet0/0/19
+port link-type access
+port default vlan 102
+interface Ethernet0/0/20
+port link-type access
+port default vlan 102
+interface Ethernet0/0/21
+port link-type access
+port default vlan 102
+interface Ethernet0/0/22
+port link-type access
+port default vlan 102
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk pvid vlan 2
+port trunk allow-pass vlan 2 102
+
+
+
+
+
+
+
+F2-ACC2
+vlan batch 2 101 106 206
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif2
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.2.254
+interface Vlanif1
+interface Vlanif2
+ip address 192.168.2.2 255.255.255.0
+interface Ethernet0/0/1
+port link-type access
+port default vlan 101
+interface Ethernet0/0/2
+port link-type access
+port default vlan 101
+interface Ethernet0/0/3
+port link-type access
+port default vlan 101
+interface Ethernet0/0/4
+port link-type access
+port default vlan 101
+interface Ethernet0/0/5
+port link-type access
+port default vlan 101
+interface Ethernet0/0/6
+port link-type access
+port default vlan 101
+interface Ethernet0/0/7
+port link-type access
+port default vlan 101
+interface Ethernet0/0/8
+port link-type access
+port default vlan 101
+interface Ethernet0/0/9
+port link-type access
+port default vlan 101
+interface Ethernet0/0/10
+port link-type access
+port default vlan 101
+interface Ethernet0/0/11
+port link-type access
+port default vlan 101
+interface Ethernet0/0/12
+port link-type access
+port default vlan 101
+interface Ethernet0/0/13
+port link-type access
+port default vlan 101
+interface Ethernet0/0/14
+port link-type access
+port default vlan 101
+interface Ethernet0/0/15
+port link-type access
+port default vlan 101
+interface Ethernet0/0/16
+port link-type access
+port default vlan 101
+interface Ethernet0/0/17
+port link-type access
+port default vlan 101
+interface Ethernet0/0/18
+port link-type access
+port default vlan 101
+interface Ethernet0/0/19
+port link-type access
+port default vlan 101
+interface Ethernet0/0/20
+port link-type trunk
+port trunk pvid vlan 206
+port trunk allow-pass vlan 106 206
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk pvid vlan 2
+port trunk allow-pass vlan 2 101 106 206
+
+
+
+
+
+F2-ACC3
+vlan batch 2 102
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+vlan batch 2 102
+snmp-agent trap source vlanif2
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.2.254
+interface Vlanif2
+ip address 192.168.2.3 255.255.255.0
+interface Ethernet0/0/1
+port link-type access
+port default vlan 102
+interface Ethernet0/0/2
+port link-type access
+port default vlan 102
+interface Ethernet0/0/3
+port link-type access
+port default vlan 102
+interface Ethernet0/0/4
+port link-type access
+port default vlan 102
+interface Ethernet0/0/5
+port link-type access
+port default vlan 102
+interface Ethernet0/0/6
+port link-type access
+port default vlan 102
+interface Ethernet0/0/7
+port link-type access
+port default vlan 102
+interface Ethernet0/0/8
+port link-type access
+port default vlan 102
+interface Ethernet0/0/9
+port link-type access
+port default vlan 102
+interface Ethernet0/0/10
+port link-type access
+port default vlan 102
+interface Ethernet0/0/11
+port link-type access
+port default vlan 102
+interface Ethernet0/0/12
+port link-type access
+port default vlan 102
+interface Ethernet0/0/13
+port link-type access
+port default vlan 102
+interface Ethernet0/0/14
+port link-type access
+port default vlan 102
+interface Ethernet0/0/15
+port link-type access
+port default vlan 102
+interface Ethernet0/0/16
+port link-type access
+port default vlan 102
+interface Ethernet0/0/17
+port link-type access
+port default vlan 102
+interface Ethernet0/0/18
+port link-type access
+port default vlan 102
+interface Ethernet0/0/19
+port link-type access
+port default vlan 102
+interface Ethernet0/0/20
+port link-type access
+port default vlan 102
+interface Ethernet0/0/21
+port link-type access
+port default vlan 102
+interface Ethernet0/0/22
+port link-type access
+port default vlan 102
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk pvid vlan 2
+port trunk allow-pass vlan 2 102
+
+
+
+
+F3-ACC1
+vlan batch 3 103 to 104
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif3
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.3.254
+interface Vlanif3
+ip address 192.168.3.1 255.255.255.0
+interface Ethernet0/0/1
+port link-type access
+port default vlan 103
+interface Ethernet0/0/2
+port link-type access
+port default vlan 103
+interface Ethernet0/0/3
+port link-type access
+port default vlan 103
+interface Ethernet0/0/4
+port link-type access
+port default vlan 103
+interface Ethernet0/0/5
+port link-type access
+port default vlan 103
+interface Ethernet0/0/6
+port link-type access
+port default vlan 103
+interface Ethernet0/0/7
+port link-type access
+port default vlan 103
+interface Ethernet0/0/8
+port link-type access
+port default vlan 103
+interface Ethernet0/0/9
+port link-type access
+port default vlan 103
+interface Ethernet0/0/10
+port link-type access
+port default vlan 103
+interface Ethernet0/0/11
+port link-type access
+port default vlan 104
+interface Ethernet0/0/12
+port link-type access
+port default vlan 104
+interface Ethernet0/0/13
+port link-type access
+port default vlan 104
+interface Ethernet0/0/14
+port link-type access
+port default vlan 104
+interface Ethernet0/0/15
+port link-type access
+port default vlan 104
+interface Ethernet0/0/16
+port link-type access
+port default vlan 104
+interface Ethernet0/0/17
+port link-type access
+port default vlan 104
+interface Ethernet0/0/18
+port link-type access
+port default vlan 104
+interface Ethernet0/0/19
+port link-type access
+port default vlan 104
+interface Ethernet0/0/20
+port link-type access
+port default vlan 104
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk pvid vlan 3
+port trunk allow-pass vlan 3 103 to 104
+
+
+
+
+F3-ACC2
+vlan batch 3 103 107 207
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif3
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.3.254
+interface Vlanif3
+ip address 192.168.3.2 255.255.255.0
+interface Ethernet0/0/1
+port link-type access
+port default vlan 103
+interface Ethernet0/0/2
+port link-type access
+port default vlan 103
+interface Ethernet0/0/3
+port link-type access
+port default vlan 103
+interface Ethernet0/0/4
+port link-type access
+port default vlan 103
+interface Ethernet0/0/5
+port link-type access
+port default vlan 103
+interface Ethernet0/0/6
+port link-type access
+port default vlan 103
+interface Ethernet0/0/7
+port link-type access
+port default vlan 103
+interface Ethernet0/0/8
+port link-type access
+port default vlan 103
+interface Ethernet0/0/9
+port link-type access
+port default vlan 103
+interface Ethernet0/0/10
+port link-type access
+port default vlan 103
+interface Ethernet0/0/11
+port link-type access
+port default vlan 103
+interface Ethernet0/0/12
+port link-type access
+port default vlan 103
+interface Ethernet0/0/13
+port link-type access
+port default vlan 103
+interface Ethernet0/0/14
+port link-type access
+port default vlan 103
+interface Ethernet0/0/15
+port link-type access
+port default vlan 103
+interface Ethernet0/0/16
+port link-type access
+port default vlan 103
+interface Ethernet0/0/17
+port link-type access
+port default vlan 103
+interface Ethernet0/0/18
+port link-type access
+port default vlan 103
+interface Ethernet0/0/19
+port link-type access
+port default vlan 103
+interface Ethernet0/0/20
+port link-type trunk
+port trunk pvid vlan 207
+port trunk allow-pass vlan 107 207
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk pvid vlan 3
+port trunk allow-pass vlan 3 103 107 207
+
+
+
+F3-ACC3
+vlan batch 3 103 to 104
+snmp-agent sys-info version v3
+snmp-agent group v3 datacom privacy
+snmp-agent target-host trap address udp-domain 192.168.100.2 params securityname datacom v3
+snmp usm-user v3 test datacom authentication-mode md5 huaweilab privacy-mode des56 huaweilab
+snmp-agent trap source vlanif3
+snmp-agent trap enable 
+snmp-agent 
+ip route-static 0.0.0.0 0.0.0.0 192.168.3.254
+interface Vlanif3
+ip address 192.168.3.3 255.255.255.0
+interface Ethernet0/0/1
+port link-type access
+port default vlan 103
+interface Ethernet0/0/2
+port link-type access
+port default vlan 103
+interface Ethernet0/0/3
+port link-type access
+port default vlan 103
+interface Ethernet0/0/4
+port link-type access
+port default vlan 103
+interface Ethernet0/0/5
+port link-type access
+port default vlan 103
+interface Ethernet0/0/6
+port link-type access
+port default vlan 103
+interface Ethernet0/0/7
+port link-type access
+port default vlan 103
+interface Ethernet0/0/8
+port link-type access
+port default vlan 103
+interface Ethernet0/0/9
+port link-type access
+port default vlan 103
+interface Ethernet0/0/10
+port link-type access
+port default vlan 103
+interface Ethernet0/0/11
+port link-type access
+port default vlan 104
+interface Ethernet0/0/12
+port link-type access
+port default vlan 104
+interface Ethernet0/0/13
+port link-type access
+port default vlan 104
+interface Ethernet0/0/14
+port link-type access
+port default vlan 104
+interface Ethernet0/0/15
+port link-type access
+port default vlan 104
+interface Ethernet0/0/16
+port link-type access
+port default vlan 104
+interface Ethernet0/0/17
+port link-type access
+port default vlan 104
+interface Ethernet0/0/18
+port link-type access
+port default vlan 104
+interface Ethernet0/0/19
+port link-type access
+port default vlan 104
+interface Ethernet0/0/20
+port link-type access
+interface GigabitEthernet0/0/1
+port link-type trunk
+port trunk pvid vlan 3
+port trunk allow-pass vlan 3 103 to 104

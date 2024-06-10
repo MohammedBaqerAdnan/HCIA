@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UNICODE" ?>
+<topo version="1.3.00.100">
+    <devices>
+        <dev id="C3915299-A6DF-4eb9-B5DF-C259B2BF460D" name="Cloud" poe="0" model="Cloud" settings="" system_mac="" com_port="0" bootmode="0" cx="211.500000" cy="189.500000" edit_left="155" edit_top="226">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="Ethernet" count="0" />
+                <interface sztype="Ethernet" interfacename="GE" count="2" />
+                <interface sztype="Serial" interfacename="Serial" count="0" />
+                <interfaceMap sztype="Ethernet" interfacename="GE" displayNo="1" remoteDisplayNo="2" adapterUid="\Device\NPF_{BE4AF229-E453-4AC8-9114-8E9B9C6CBFAC}" isOpen="1" udpPort="0" peerIPAdd="0.0.0.0" peerIP="0" peerPort="0" />
+                <interfaceMap sztype="Ethernet" interfacename="GE" displayNo="2" remoteDisplayNo="1" adapterUid="" isOpen="0" udpPort="0" peerIPAdd="0.0.0.0" peerIP="0" peerPort="0" />
+            </slot>
+        </dev>
+        <dev id="CD0AA62E-8262-436b-98B4-8FD991B48866" name="S1" poe="0" model="S5700" settings="" system_mac="4C-1F-CC-4D-14-BC" com_port="2001" bootmode="0" cx="624.000000" cy="207.000000" edit_left="715" edit_top="231">
+            <slot number="slot17" isMainBoard="1">
+                <interface sztype="Ethernet" interfacename="GE" count="24" />
+            </slot>
+        </dev>
+    </devices>
+    <lines>
+        <line srcDeviceID="C3915299-A6DF-4eb9-B5DF-C259B2BF460D" destDeviceID="CD0AA62E-8262-436b-98B4-8FD991B48866">
+            <interfacePair lineName="Copper" srcIndex="1" srcBoundRectIsMoved="1" srcBoundRect_X="318.396149" srcBoundRect_Y="232.324417" srcOffset_X="-9.000000" srcOffset_Y="-22.000000" tarIndex="0" tarBoundRectIsMoved="1" tarBoundRect_X="607.816772" tarBoundRect_Y="233.782455" tarOffset_X="-30.000000" tarOffset_Y="-21.000000" />
+        </line>
+    </lines>
+    <shapes />
+    <txttips>
+        <txttip left="634" top="262" right="948" bottom="466" content="S1&#x0D;&#x0A;int vlanif1&#x0D;&#x0A;ip add 192.168.10.101 24 &#x0D;&#x0A;user-interface vty 0 4&#x0D;&#x0A;authentication-mode password&#x0D;&#x0A;set authentication password simple huawei&#x0D;&#x0A;protocol inbound telnet&#x0D;&#x0A;user privilege level 15&#x0D;&#x0A;q&#x0D;&#x0A;telnet server enable&#x0D;&#x0A;&#x0D;&#x0A;&#x0D;&#x0A;" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-8323073" charset="1" />
+        <txttip left="396" top="208" right="513" bottom="225" content="192.168.10.0/24" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+        <txttip left="592" top="239" right="626" bottom="256" content=".101" fontname="Consolas" fontstyle="0" editsize="100" txtcolor="-16777216" txtbkcolor="-7278960" charset="1" />
+    </txttips>
+</topo>

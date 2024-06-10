@@ -1,0 +1,31 @@
+
+R1
+int gig0/0/3
+ip add 10.0.12.1 24
+aaa
+authentication-scheme huawei
+authentication-mode local
+q
+authorization-scheme huawei
+authorization-mode local
+q
+domain huawei
+authentication-scheme huawei
+authorization-scheme huawei
+q
+local-user lab@huawei password cipher huawei
+local-user lab@huawei service-type telnet 
+local-user lab@huawei privilege level 3 
+q
+telnet server enable 
+user-interface vty 0 4 
+authentication-mode aaa
+
+
+
+
+R2
+int gig0/0/2
+ip add 10.0.12.2 24
+
+

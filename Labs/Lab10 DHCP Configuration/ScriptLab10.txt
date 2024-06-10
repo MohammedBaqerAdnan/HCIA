@@ -1,0 +1,34 @@
+R1
+dhcp enable 
+int gig0/0/2
+ip add dhcp-alloc
+
+
+R2
+int gig0/0/2
+ip add 10.0.12.2 24
+int gig0/0/1
+ip add 10.0.23.2 24
+q
+dhcp enable 
+int gig0/0/2
+dhcp select interface 
+dhcp server dns-list 10.0.12.2
+q
+ip pool globalpool
+network 10.0.23.0 mask 24
+dns-list 10.0.23.2
+gateway-list 10.0.23.2
+lease day 2 hour 2 
+static-bind ip-address 10.0.23.3 mac-address 00e0-fc07-2349
+q
+int gig0/0/1
+dhcp select global 
+
+
+
+
+R3
+dhcp enable 
+int gig0/0/2
+ip add dhcp-alloc

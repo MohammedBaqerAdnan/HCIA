@@ -1,0 +1,55 @@
+R1
+int gig0/0/1
+ip add 10.1.2.1 24 
+
+S3
+vlan 3 
+int gig0/0/1
+port link-type access 
+port default vlan 3 
+int vlanif3 
+ip add 10.1.3.1 24 
+
+
+S4
+vlan 3 
+int gig0/0/2
+port link-type access 
+port default vlan 3 
+int vlanif3 
+ip add 10.1.3.2 24 
+
+S1
+vlan batch 2 3 10
+int gig0/0/1 
+port link-type access 
+port default vlan 2
+int gig0/0/13
+port link-type access 
+port default vlan 3
+int gig0/0/10
+port link-type trunk 
+port trunk allow-pass vlan 2 3 10
+undo port trunk allow-pass vlan 1
+
+
+S2
+vlan batch 2 3 10
+int gig0/0/14
+port link-type access 
+port default vlan 3
+int gig0/0/10
+port link-type trunk 
+port trunk allow-pass vlan 2 3 10
+undo port trunk allow-pass vlan 1
+vlan 10
+mac-vlan mac-address 5489-9882-6ae2
+int gig0/0/1
+port link-type hybrid 
+port hybrid untagged vlan 10
+mac-vlan enable 
+
+
+R3
+int gig0/0/2
+ip add 10.1.10.1 24
